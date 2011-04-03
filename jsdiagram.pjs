@@ -25,14 +25,14 @@ void draw() {
 }
 
 void mouseDragged() {
-	for (var i = 0; i < items.size(); i++) {
+	for (var i = items.size() - 1; i >= 0; i--) {
 		UMLItem item = (UMLItem)items.get(i);
 		if (item.inBounds(mouseX, mouseY)) {
 			item.move(mouseX, mouseY);
-			redraw();
 			break;
 		}
 	}
+	redraw();
 }
 
 
@@ -91,7 +91,7 @@ class Case extends UMLItem {
 	}
 	
 	boolean inBounds(xPos, yPos) {
-		return xPos >= x - round(size / 2) && xPos <= x + round(size / 2) && yPos >= y - round(size / 3) && yPos <= y + round(size / 3);
+		return xPos >= x - round(size / 2) && xPos <= x + round(size / 2) && yPos >= y - round(size / 3 / 2) && yPos <= y + round(size / 3 / 2);
 	}
 }
 
@@ -112,5 +112,9 @@ class Actor extends UMLItem {
 		line(x - sixth, y, x + sixth, y);
 		line(x, y + sixth, x - sixth, y + third + sixth);
 		line(x, y + sixth, x + sixth, y + third + sixth);
+	}
+
+	boolean inBounds(xPos, yPos) {
+		return xPos >= x - sixth && xPos <= xPos + sixth && yPos >= y - sixth - third && yPos <= y + sixth + third;
 	}
 }
