@@ -1,7 +1,16 @@
+ArrayList items;
+
 void setup() {
 	size(1200, 700);
 	PFont fontA = loadFont("courier");
 	textFont(fontA, 14);
+	
+	items = new ArrayList();
+
+	var a = new Actor();
+	var c = new Case();
+	items.add(a);
+	items.add(c);
 }
 
 void draw() {
@@ -10,10 +19,15 @@ void draw() {
 	text("Hello Web!",20,20);
 	println("Hello ErrorLog!");
 
-	var a = new Actor();
-	a.display();
-	var c = new Case();
-	c.display();
+	for (var i = 0; i < items.size(); i++) {
+		(UMLItem)(items.get(i)).display();
+	}
+
+	noLoop();
+}
+
+void mouseDragged() {
+	
 }
 
 
