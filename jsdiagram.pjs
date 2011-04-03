@@ -10,8 +10,10 @@ void draw() {
 	text("Hello Web!",20,20);
 	println("Hello ErrorLog!");
 
-	var actor = new Actor();
-	actor.display();
+	var a = new Actor();
+	a.display();
+	var c = new Case();
+	c.display();
 }
 
 
@@ -52,9 +54,11 @@ class UMLGroup {
  */
 class Case extends UMLItem {
 	var size = 150;
+	var backgroundColor = 245;
 	
 	void display() {
-		
+		fill(backgroundColor);
+		ellipse(x, y, size, round(size / 3));
 	}
 }
 
