@@ -1,0 +1,79 @@
+void setup() {
+	size(1200, 700);
+	PFont fontA = loadFont("courier");
+	textFont(fontA, 14);
+}
+
+void draw() {
+	background(0xDD);
+	fill(0x33);
+	text("Hello Web!",20,20);
+	println("Hello ErrorLog!");
+
+	var actor = new Actor();
+	actor.display();
+}
+
+
+
+
+/**
+ * Generic UML Item
+ *
+ * Implements all the base funcitonality for visible UML items
+ */
+class UMLItem {
+	var x, y;
+	
+	UMLItem() {
+		x = 100;
+		y = 100;
+	}
+	
+	void display() {
+		println('ERROR: display() called from class not defining its own display() method.');
+	}
+}
+
+/**
+ * Group object to hold UML items
+ *
+ * TODO: Description
+ * TODO: Implementation
+ */
+class UMLGroup {
+	
+}
+
+/**
+ * UML Use Case
+ *
+ * Represents a case in a UML diagram
+ */
+class Case extends UMLItem {
+	var size = 150;
+	
+	void display() {
+		
+	}
+}
+
+/**
+ * UML Actor
+ *
+ * Represents an actor in a UML diagram
+ */
+class Actor extends UMLItem {
+	var size = 60;
+	
+	void display() {
+		var third = round(size / 3);
+		var sixth = round(third / 2);
+		noFill();
+		ellipse(x, y - third, third, third);
+		line(x, y + sixth, x, y - sixth);
+		line(x - sixth, y, x + sixth, y);
+		line(x, y + sixth, x - sixth, y + third + sixth);
+		line(x, y + sixth, x + sixth, y + third + sixth);
+	}
+}
